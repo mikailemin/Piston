@@ -58,7 +58,8 @@ public abstract class FeaturesState : MonoBehaviour, IPartFutures
 
     public virtual void CheckUp(AssemblyControl assembly)
     {
-       assemblyControlsBack.Remove(assembly);
+      
+            assemblyControlsBack.Remove(assembly);
         assemblyControls.Insert(0, assembly);
        
     }

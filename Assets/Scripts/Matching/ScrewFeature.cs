@@ -26,6 +26,7 @@ public class ScrewFeature : FeaturesState
 
                     assemblyControls[i].isDone = false;
                     AssemblyControl assembly = assemblyControls[i];
+                    assembly.referanceFuture = this;
                     assembly.isBack = true;
 
                     assembly.gameObject.transform.DOLocalMove(endPos1, .5f).OnComplete(() =>
@@ -62,7 +63,14 @@ public class ScrewFeature : FeaturesState
     public override void CheckUp(AssemblyControl assembly)
     {
         base.CheckUp(assembly);
-
+        assembly.gameObject.transform.DOLocalMove(endPos2, 1f).OnComplete(() =>
+        {
+            assembly.gameObject.transform.DORotate(new Vector3(0, 0, -1440), 3, RotateMode.LocalAxisAdd).SetEase(Ease.Linear);
+            assembly.gameObject.transform.DOLocalMove(endPos1, 0.5f).OnComplete(() =>
+            {
+                assembly.gameObject.transform.position = assembly.startPos;
+            });
+        });
 
         screwFeatureEx.assemblyControlsBack.Remove(assembly);
         screwFeatureEx.assemblyControls.Insert(0, assembly);

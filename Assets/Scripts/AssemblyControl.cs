@@ -8,7 +8,7 @@ public class AssemblyControl : MonoBehaviour
     public Vector3 endPos1;
     public Vector3 endPos2;
 
-    private Vector3 startPos;
+    public Vector3 startPos;
     private Vector3 mousePosition;
 
 
@@ -57,12 +57,12 @@ public class AssemblyControl : MonoBehaviour
         {
           
                 mousePosition = Input.mousePosition - GetmousePos();
-                ColliderDedector.Instance.isClicked = true;
+               // ColliderDedector.Instance.isClicked = true;
                 ColliderDedector.Instance.assemblyReferanceName = assemblyName;
                 PartListController.Instance.BackGetFalse(referanceFuture.referansName, this, true);
-                referanceFuture.ColliderOppenOrFalse(true);
+              //  referanceFuture.ColliderOppenOrFalse(true);
                 referanceFuture.isOkey = true;
-                isDone = true;
+               // isDone = true;
                 isBack = false;
                 if (referanceFuture.assemblyControls.Contains(this)) return;
 

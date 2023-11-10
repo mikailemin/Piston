@@ -27,6 +27,7 @@ public class UpClipFeature : FeaturesState
 
                     assemblyControls[i].isDone = false;
                     AssemblyControl assembly = assemblyControls[i];
+                    assembly.referanceFuture = this;
                     assembly.isBack = true;
 
                     assembly.gameObject.transform.DOLocalMove(endPos1, .5f).OnComplete(() =>
@@ -63,6 +64,13 @@ public class UpClipFeature : FeaturesState
     {
         base.CheckUp(assembly);
 
+        assembly.gameObject.transform.DOLocalMove(endPos2, .5f).OnComplete(() =>
+        {
+            assembly.gameObject.transform.DOLocalMove(endPos1, 1f).OnComplete(() =>
+            {
+                assembly.gameObject.transform.position = assembly.startPos;
+            }); 
+        });
         upClipEx.assemblyControlsBack.Remove(assembly);
         upClipEx.assemblyControls.Insert(0, assembly);
         if (assemblyControlsBack.Count == 0)

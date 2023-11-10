@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PartListController : MonoSingelton<PartListController>
 {
     public List<AssemblyList> assemblyList;
-
+    public GameObject winPopup;
+    public GameObject piston;
 
     public AssemblyControl GetAssemblyLast(string name)
     {
@@ -60,9 +62,16 @@ public class PartListController : MonoSingelton<PartListController>
             }
 
         }
+        piston.SetActive(false);
 
-        Debug.Log("winnnn");
+        winPopup.SetActive(true);
+        //Debug.Log("winnnn");
 
+
+    }
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void GetFalse(string name, AssemblyControl assembly, bool value)
     {
