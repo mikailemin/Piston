@@ -36,9 +36,7 @@ public class AssemblyControl : MonoBehaviour
         return Camera.main.WorldToScreenPoint(transform.position);
     }
     /// <summary>
-    /// 
-    /// 
-    /// 
+    /// When the object is clicked, its location is checked and the part where it interacts 
     /// </summary>
     private void OnMouseDown()
     {
@@ -57,12 +55,12 @@ public class AssemblyControl : MonoBehaviour
         {
           
                 mousePosition = Input.mousePosition - GetmousePos();
-               // ColliderDedector.Instance.isClicked = true;
+              
                 ColliderDedector.Instance.assemblyReferanceName = assemblyName;
                 PartListController.Instance.BackGetFalse(referanceFuture.referansName, this, true);
-              //  referanceFuture.ColliderOppenOrFalse(true);
+              
                 referanceFuture.isOkey = true;
-               // isDone = true;
+            
                 isBack = false;
                 if (referanceFuture.assemblyControls.Contains(this)) return;
 

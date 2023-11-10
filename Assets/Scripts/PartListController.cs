@@ -37,7 +37,7 @@ public class PartListController : MonoSingelton<PartListController>
                         {
                             return;
                         }
-                       // Debug.Log("kolaydır etkileşim" + assembly.gameObject.name + "  " + value);
+                    
                         assemblyList[i].SideList[j - 1].GetComponent<BoxCollider>().enabled = value;
 
                     }
@@ -87,7 +87,7 @@ public class PartListController : MonoSingelton<PartListController>
                         {
                             return;
                         }
-                      //  Debug.Log("kolaydır etkileşim" + assembly.gameObject.name + "  " + value);
+                     
                         assemblyList[i].SideList[j].GetComponent<BoxCollider>().enabled = value;
 
                     }

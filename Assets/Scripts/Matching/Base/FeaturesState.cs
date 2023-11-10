@@ -17,6 +17,13 @@ public abstract class FeaturesState : MonoBehaviour, IPartFutures
     {
         boxCollider = GetComponent<BoxCollider>();
     }
+
+    /// <summary>
+    /// I took the interaction process with parameters and performed the post-comparison operations.
+    /// </summary>
+    /// <param name="name">
+    /// I cannot match the name I sent from the name parameter in the assemblycontrol list.
+    /// </param>
     public virtual void Check(string name)
     {
         if (assemblyControls.Count==0)
@@ -55,7 +62,12 @@ public abstract class FeaturesState : MonoBehaviour, IPartFutures
 
        
     }
-
+    /// <summary>
+    /// I send the completed piece of interaction back to its old place.
+    /// </summary>
+    /// <param name="assembly">
+    /// 
+    /// </param>
     public virtual void CheckUp(AssemblyControl assembly)
     {
       

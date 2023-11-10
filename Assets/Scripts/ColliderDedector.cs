@@ -9,10 +9,14 @@ public class ColliderDedector : MonoSingelton<ColliderDedector>
     public bool isClicked=false;
     [HideInInspector]
     public string assemblyReferanceName;
+
+  
     void Update()
     {
-      
 
+        /// <summary>
+        /// where it interacts when you release the mouse button
+        /// </summary>
         if (Input.GetMouseButtonUp(0))
         {
             RaycastHit hit;
