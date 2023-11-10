@@ -8,7 +8,7 @@ public class PistonFeature : FeaturesState
 {
 
     public UpClipFeature[] upClipFeature;
-    public bool isOkey=true;
+   
     public override void Check(string name)
     {
         if (isOkey)

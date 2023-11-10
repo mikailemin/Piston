@@ -7,7 +7,7 @@ public class UpClipFeature : FeaturesState
 {
     public Vector3 endPos1;
     public Vector3 endPos2;
-    public bool isOkey;
+
     public UpClipFeature upClipEx;
     public override void Check(string name)
     {
@@ -26,26 +26,29 @@ public class UpClipFeature : FeaturesState
                     assemblyControls[i].gameObject.transform.position = gameObject.transform.position;
 
                     assemblyControls[i].isDone = false;
-                    AssemblyControl assembly = assemblyControls[0];
+                    AssemblyControl assembly = assemblyControls[i];
 
                     assembly.gameObject.transform.DOLocalMove(endPos1, .5f).OnComplete(() =>
                     {
                         assembly.gameObject.transform.DOLocalMove(endPos2, 1f);
                         upClipEx.assemblyControls.Remove(assembly);
+                        upClipEx.assemblyControlsBack.Add(assembly);
+                        assemblyControlsBack.Add(assembly);
                         assemblyControls.Remove(assembly);
-                    });
+                        boxCollider.enabled = false;
 
+                    });
                 }
             }
-               
-            
+
+
             if (assemblyControls.Count == 0)
             {
-             
+
                 return;
             }
         }
-      
+
 
     }
 }

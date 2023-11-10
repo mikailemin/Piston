@@ -7,7 +7,7 @@ public class ScrewFeature : FeaturesState
 {
     public Vector3 endPos1;
     public Vector3 endPos2;
-    public bool isOkey;
+ 
     public ScrewFeature screwFeatureEx;
     public override void Check(string name)
     {
@@ -25,7 +25,7 @@ public class ScrewFeature : FeaturesState
                     assemblyControls[i].gameObject.transform.position = gameObject.transform.position;
 
                     assemblyControls[i].isDone = false;
-                    AssemblyControl assembly = assemblyControls[0];
+                    AssemblyControl assembly = assemblyControls[i];
 
                     assembly.gameObject.transform.DOLocalMove(endPos1, .5f).OnComplete(() =>
                     {
@@ -33,7 +33,10 @@ public class ScrewFeature : FeaturesState
 
                         assembly.gameObject.transform.DOLocalMove(endPos2, 1f);
                         screwFeatureEx.assemblyControls.Remove(assembly);
+                        screwFeatureEx.assemblyControlsBack.Add(assembly);
+                        assemblyControlsBack.Add(assembly);
                         assemblyControls.Remove(assembly);
+                        boxCollider.enabled = false;
                     });
 
                 }

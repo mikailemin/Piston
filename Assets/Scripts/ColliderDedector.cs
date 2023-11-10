@@ -21,7 +21,7 @@ public class ColliderDedector : MonoSingelton<ColliderDedector>
             Physics.Raycast(ray, out hit,Mathf.Infinity,targetlayer);
             if (hit.collider!=null&&isClicked)
             {
-                Debug.Log(hit.collider.gameObject.name);
+               
 
                 IPartFutures partFutures=hit.collider.gameObject.GetComponent<IPartFutures>();
                 partFutures.Check(assemblyReferanceName);
