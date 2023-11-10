@@ -40,8 +40,8 @@ public abstract class FeaturesState : MonoBehaviour, IPartFutures
                 assembly.gameObject.transform.DOLocalMove(assembly.endPos2, 1f);
                 assemblyControlsBack.Add(assembly);
                 assemblyControls.RemoveAt(0);
-                boxCollider.enabled=false;
-
+                PartListController.Instance.BackGetFalse(referansName, assembly, false);
+                ColliderOppenOrFalse(false);
             });
 
 
@@ -54,5 +54,17 @@ public abstract class FeaturesState : MonoBehaviour, IPartFutures
         }
 
        
+    }
+
+    public virtual void CheckUp(AssemblyControl assembly)
+    {
+       assemblyControlsBack.Remove(assembly);
+        assemblyControls.Insert(0, assembly);
+       
+    }
+
+    public virtual void ColliderOppenOrFalse(bool value)
+    {
+      boxCollider.enabled = value;
     }
 }

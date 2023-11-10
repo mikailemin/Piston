@@ -7,7 +7,7 @@ public class UpClipFeature : FeaturesState
 {
     public Vector3 endPos1;
     public Vector3 endPos2;
-
+    public PistonFeature pistonFeature;
     public UpClipFeature upClipEx;
     public override void Check(string name)
     {
@@ -27,6 +27,7 @@ public class UpClipFeature : FeaturesState
 
                     assemblyControls[i].isDone = false;
                     AssemblyControl assembly = assemblyControls[i];
+                    assembly.isBack = true;
 
                     assembly.gameObject.transform.DOLocalMove(endPos1, .5f).OnComplete(() =>
                     {
@@ -35,20 +36,53 @@ public class UpClipFeature : FeaturesState
                         upClipEx.assemblyControlsBack.Add(assembly);
                         assemblyControlsBack.Add(assembly);
                         assemblyControls.Remove(assembly);
-                        boxCollider.enabled = false;
+                        ColliderOppenOrFalse(false);
+                        if (assemblyControlsBack.Count > 0)
+                        {
+                            AssemblyControl control = PartListController.Instance.GetAssemblyLast(pistonFeature.referansName);
+                            PartListController.Instance.GetFalse(pistonFeature.referansName, control, false);
+                            pistonFeature.isOkey = false;
 
+                        }
+                        else
+                        {
+                            pistonFeature.isOkey = true;
+                        }
+                        PartListController.Instance.WinControl();
                     });
                 }
             }
 
 
-            if (assemblyControls.Count == 0)
-            {
 
-                return;
-            }
         }
 
 
     }
+    public override void CheckUp(AssemblyControl assembly)
+    {
+        base.CheckUp(assembly);
+
+        upClipEx.assemblyControlsBack.Remove(assembly);
+        upClipEx.assemblyControls.Insert(0, assembly);
+        if (assemblyControlsBack.Count == 0)
+        {
+            AssemblyControl control = PartListController.Instance.GetAssemblyLast(pistonFeature.referansName);
+            PartListController.Instance.GetFalse(pistonFeature.referansName, control, true);
+            pistonFeature.isOkey = true;
+
+        }
+        else
+        {
+            pistonFeature.isOkey = false;
+        }
+       
+
+    }
+    public override void ColliderOppenOrFalse(bool value)
+    {
+        base.ColliderOppenOrFalse(value);
+        upClipEx.boxCollider.enabled = value;
+    }
+
 }

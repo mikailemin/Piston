@@ -10,24 +10,24 @@ public class AssemblyControl : MonoBehaviour
 
     private Vector3 startPos;
     private Vector3 mousePosition;
-    
+
 
     [HideInInspector]
     public bool isDone;
     [HideInInspector]
     public bool isBack;
-  
 
-    [SerializeField]
-    private  FeaturesState referanceFuture;
-    private BoxCollider referansBoxColiider;
+
+
+    public FeaturesState referanceFuture;
+
 
     public string assemblyName;
 
 
     private void Start()
     {
-        referansBoxColiider=referanceFuture.GetComponent<BoxCollider>();
+
 
         startPos = transform.position;
     }
@@ -48,39 +48,30 @@ public class AssemblyControl : MonoBehaviour
             ColliderDedector.Instance.isClicked = true;
             ColliderDedector.Instance.assemblyReferanceName = assemblyName;
             isDone = true;
-            referansBoxColiider.enabled = true;
+            referanceFuture.ColliderOppenOrFalse(true);
+
+
 
         }
-        else if (!ColliderDedector.Instance.isClicked && !isDone&&isBack)
+        else if (!ColliderDedector.Instance.isClicked && !isDone && isBack)
         {
-            if (referanceFuture.assemblyControlsBack[referanceFuture.assemblyControlsBack.Count-1]!=this)
-            {
-                Debug.Log("eşleşmedi");
-                return;
-            }
-            else
-            {
+          
                 mousePosition = Input.mousePosition - GetmousePos();
                 ColliderDedector.Instance.isClicked = true;
                 ColliderDedector.Instance.assemblyReferanceName = assemblyName;
-                referansBoxColiider.enabled = true;
+                PartListController.Instance.BackGetFalse(referanceFuture.referansName, this, true);
+                referanceFuture.ColliderOppenOrFalse(true);
                 referanceFuture.isOkey = true;
                 isDone = true;
-                isBack=false;
-                for (int i = 0; i < referanceFuture.assemblyControls.Count; i++)
-                {
-                    if (referanceFuture.assemblyControls[i]==this)
-                    {
-                      
-                        return;
-                    }
+                isBack = false;
+                if (referanceFuture.assemblyControls.Contains(this)) return;
 
-                }
-                referanceFuture.assemblyControlsBack.Remove(referanceFuture.assemblyControlsBack[referanceFuture.assemblyControlsBack.Count - 1]);
-                referanceFuture.assemblyControls.Insert(0, this); ;
-              
-            }
-          
+
+
+                referanceFuture.CheckUp(this);
+
+
+
         }
 
     }

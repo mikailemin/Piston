@@ -192,12 +192,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referansName: upsideClib
+  isOkey: 0
+  boxCollider: {fileID: 0}
   assemblyControls:
   - {fileID: 6773791690800321865}
   - {fileID: 5732238436214343885}
+  assemblyControlsBack: []
   endPos1: {x: 0.0599, y: 0.065, z: -0.0479}
   endPos2: {x: 0.0287, y: 0.0656, z: -0.0236}
-  isOkey: 0
+  pistonFeature: {fileID: 1946701342}
   upClipEx: {fileID: 803729014}
 --- !u!23 &142587645
 MeshRenderer:
@@ -412,12 +415,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referansName: upsideClib
+  isOkey: 0
+  boxCollider: {fileID: 0}
   assemblyControls:
   - {fileID: 6773791690800321865}
   - {fileID: 5732238436214343885}
+  assemblyControlsBack: []
   endPos1: {x: -0.0566, y: 0.0677, z: 0.0414}
   endPos2: {x: -0.024, y: 0.0662, z: 0.0206}
-  isOkey: 0
+  pistonFeature: {fileID: 1946701342}
   upClipEx: {fileID: 142587644}
 --- !u!23 &803729015
 MeshRenderer:
@@ -588,12 +594,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referansName: Screw
+  isOkey: 0
+  boxCollider: {fileID: 0}
   assemblyControls:
   - {fileID: 5228342621863340628}
   - {fileID: 6482647690255352572}
+  assemblyControlsBack: []
   endPos1: {x: 0.0231, y: -0.1034, z: 0.0221}
   endPos2: {x: 0.02447, y: -0.075, z: 0.02367}
-  isOkey: 0
+  bearingFeature: {fileID: 1246392517}
   screwFeatureEx: {fileID: 1269240010}
 --- !u!1 &963194225
 GameObject:
@@ -883,14 +892,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referansName: rodBear
+  isOkey: 1
+  boxCollider: {fileID: 0}
   assemblyControls:
   - {fileID: 7105608186774729544}
   - {fileID: 6537688856495700007}
   - {fileID: 8383396662630878873}
+  assemblyControlsBack: []
   screwFeatures:
   - {fileID: 921484306}
   - {fileID: 1269240010}
-  isOkey: 1
 --- !u!1 &1269240004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,12 +1021,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referansName: Screw
+  isOkey: 0
+  boxCollider: {fileID: 0}
   assemblyControls:
   - {fileID: 5228342621863340628}
   - {fileID: 6482647690255352572}
+  assemblyControlsBack: []
   endPos1: {x: -0.0177, y: -0.1007, z: -0.0258}
   endPos2: {x: -0.0182, y: -0.076, z: -0.0265}
-  isOkey: 0
+  bearingFeature: {fileID: 1246392517}
   screwFeatureEx: {fileID: 921484306}
 --- !u!1 &1904939237
 GameObject:
@@ -1185,13 +1199,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referansName: upside
+  isOkey: 1
+  boxCollider: {fileID: 0}
   assemblyControls:
   - {fileID: 9218313393156970838}
   - {fileID: 4068020289562633140}
+  assemblyControlsBack: []
   upClipFeature:
   - {fileID: 803729014}
   - {fileID: 142587644}
-  isOkey: 1
 --- !u!33 &18776993847082214
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1701,7 +1717,6 @@ MonoBehaviour:
   endPos2: {x: 0.0025149107, y: 0.0668, z: -0.0020623207}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 1946701342}
   assemblyName: upside1
 --- !u!4 &4171299007609065945
@@ -1911,7 +1926,6 @@ MonoBehaviour:
   endPos2: {x: 0.0231, y: -0.0761, z: 0.0221}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 921484306}
   assemblyName: underPart3
 --- !u!1 &5347146642408049799
@@ -2028,7 +2042,6 @@ MonoBehaviour:
   endPos2: {x: -0.0238, y: 0.0665, z: 0.02}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 803729014}
   assemblyName: upside3
 --- !u!4 &5857419765845193136
@@ -2125,7 +2138,6 @@ MonoBehaviour:
   endPos2: {x: -0.0189, y: -0.0752, z: -0.0272}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 921484306}
   assemblyName: underPart4
 --- !u!33 &6537688856495700004
@@ -2200,7 +2212,6 @@ MonoBehaviour:
   endPos2: {x: 0.002514887, y: -0.0865, z: -0.0021}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 1246392517}
   assemblyName: underPart1
 --- !u!1 &6597902779527543114
@@ -2327,7 +2338,6 @@ MonoBehaviour:
   endPos2: {x: 0.0294, y: 0.066, z: -0.0245}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 803729014}
   assemblyName: upside2
 --- !u!1 &7105608186774729541
@@ -2415,7 +2425,6 @@ MonoBehaviour:
   endPos2: {x: 0.002514887, y: -0.0614, z: -0.002062297}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 1246392517}
   assemblyName: underPart0
 --- !u!23 &7706549385767357582
@@ -2608,7 +2617,6 @@ MonoBehaviour:
   endPos2: {x: 0.0025128603, y: -0.089, z: -0.0021}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 1246392517}
   assemblyName: underPart2
 --- !u!1 &9218313393156970835
@@ -2696,7 +2704,6 @@ MonoBehaviour:
   endPos2: {x: 0.0027416707, y: 0.0768, z: -0.002}
   isDone: 0
   isBack: 0
-  isActivet: 0
   referanceFuture: {fileID: 1946701342}
   assemblyName: upside0
 --- !u!1660057539 &9223372036854775807

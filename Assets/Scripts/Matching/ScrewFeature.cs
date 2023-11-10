@@ -7,7 +7,7 @@ public class ScrewFeature : FeaturesState
 {
     public Vector3 endPos1;
     public Vector3 endPos2;
- 
+    public RodBearingFeature bearingFeature;
     public ScrewFeature screwFeatureEx;
     public override void Check(string name)
     {
@@ -26,6 +26,7 @@ public class ScrewFeature : FeaturesState
 
                     assemblyControls[i].isDone = false;
                     AssemblyControl assembly = assemblyControls[i];
+                    assembly.isBack = true;
 
                     assembly.gameObject.transform.DOLocalMove(endPos1, .5f).OnComplete(() =>
                     {
@@ -36,19 +37,52 @@ public class ScrewFeature : FeaturesState
                         screwFeatureEx.assemblyControlsBack.Add(assembly);
                         assemblyControlsBack.Add(assembly);
                         assemblyControls.Remove(assembly);
-                        boxCollider.enabled = false;
+                        ColliderOppenOrFalse(false);
+
+                        if (assemblyControlsBack.Count > 0)
+                        {
+                            AssemblyControl control = PartListController.Instance.GetAssemblyLast(bearingFeature.referansName);
+                            PartListController.Instance.GetFalse(bearingFeature.referansName, control, false);
+                            bearingFeature.isOkey = false;
+
+                        }
+                        else
+                        {
+                            bearingFeature.isOkey = true;
+                        }
+                        PartListController.Instance.WinControl();
                     });
 
                 }
             }
 
-
-            if (assemblyControls.Count == 0)
-            {
-
-                return;
-            }
         }
 
+    }
+    public override void CheckUp(AssemblyControl assembly)
+    {
+        base.CheckUp(assembly);
+
+
+        screwFeatureEx.assemblyControlsBack.Remove(assembly);
+        screwFeatureEx.assemblyControls.Insert(0, assembly);
+        if (assemblyControlsBack.Count == 0)
+        {
+            AssemblyControl control = PartListController.Instance.GetAssemblyLast(bearingFeature.referansName);
+            PartListController.Instance.GetFalse(bearingFeature.referansName, control, true);
+            bearingFeature.isOkey = true;
+
+        }
+        else
+        {
+            bearingFeature.isOkey = false;
+        }
+
+
+    }
+    public override void ColliderOppenOrFalse(bool value)
+    {
+        base.ColliderOppenOrFalse(value);
+        screwFeatureEx.boxCollider.enabled = value;
     }
 }

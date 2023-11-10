@@ -24,7 +24,7 @@ public class PistonFeature : FeaturesState
         yield return new WaitForSeconds(.6f);
         if (assemblyControls.Count == 0)
         {
-            isOkey = false;
+          //  isOkey = false;
             for (int i = 0; i < upClipFeature.Length; i++)
             {
                 upClipFeature[i].isOkey = true;

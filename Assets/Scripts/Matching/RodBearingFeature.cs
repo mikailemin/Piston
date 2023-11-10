@@ -21,7 +21,7 @@ public class RodBearingFeature : FeaturesState
         yield return new WaitForSeconds(.6f);
         if (assemblyControls.Count == 0)
         {
-            isOkey = false;
+          //  isOkey = false;
             for (int i = 0; i < screwFeatures.Length; i++)
             {
                 screwFeatures[i].isOkey = true;
