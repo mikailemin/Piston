@@ -25,6 +25,10 @@ public class RodBearingFeature : FeaturesState
                 assembly.gameObject.transform.position=assembly.startPos;
             }); 
         });
+        for (int i = 0; i < screwFeatures.Length; i++)
+        {
+            screwFeatures[i].isOkey = false;
+        }
         base.CheckUp(assembly);
 
     }

@@ -27,6 +27,10 @@ public class PistonFeature : FeaturesState
                 assembly.gameObject.transform.position = assembly.startPos;
             }); 
         });
+        for (int i = 0; i < upClipFeature.Length; i++)
+        {
+            upClipFeature[i].isOkey = false;
+        }
         base.CheckUp(assembly);
       
     }
