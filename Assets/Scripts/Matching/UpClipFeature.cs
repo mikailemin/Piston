@@ -62,15 +62,18 @@ public class UpClipFeature : FeaturesState
     }
     public override void CheckShine(string name)
     {
-        for (int i = 0; i < assemblyControls.Count; i++)
+        if (isOkey)
         {
-            if (assemblyControls[i].assemblyName == name)
+            for (int i = 0; i < assemblyControls.Count; i++)
             {
-                AssemblyControl assembly = assemblyControls[i];
-                assembly.referanceFuture = this;
-                assembly.ghostObje.gameObject.SetActive(true);
-                assembly.ghostObje.GiveEffect();
+                if (assemblyControls[i].assemblyName == name)
+                {
+                    AssemblyControl assembly = assemblyControls[i];
+                    assembly.referanceFuture = this;
+                    assembly.ghostObje.gameObject.SetActive(true);
+                    assembly.ghostObje.GiveEffect();
 
+                }
             }
         }
 
