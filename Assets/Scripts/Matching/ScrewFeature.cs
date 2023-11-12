@@ -22,10 +22,10 @@ public class ScrewFeature : FeaturesState
             {
                 if (assemblyControls[i].assemblyName == name)
                 {
-                    assemblyControls[i].gameObject.transform.position = gameObject.transform.position;
+                  
 
-                    assemblyControls[i].isDone = false;
                     AssemblyControl assembly = assemblyControls[i];
+                    assembly.isDone = false;
                     assembly.referanceFuture = this;
                     assembly.isBack = true;
 
@@ -59,6 +59,22 @@ public class ScrewFeature : FeaturesState
 
         }
 
+    }
+    public override void CheckShine(string name)
+    {
+        for (int i = 0; i < assemblyControls.Count; i++)
+        {
+            if (assemblyControls[i].assemblyName == name)
+            {
+                AssemblyControl assembly = assemblyControls[i];
+                assembly.referanceFuture = this;
+                assembly.ghostObje.gameObject.SetActive(true);
+                assembly.ghostObje.GiveEffect();
+
+            }
+        }
+                
+        
     }
     public override void CheckUp(AssemblyControl assembly)
     {

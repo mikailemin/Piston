@@ -12,18 +12,16 @@ public class AssemblyControl : MonoBehaviour
     private Vector3 mousePosition;
 
 
-    [HideInInspector]
-    public bool isDone;
-    [HideInInspector]
-    public bool isBack;
-
-
-
     public FeaturesState referanceFuture;
+    public PistonGhost ghostObje;
 
 
     public string assemblyName;
 
+    [HideInInspector]
+    public bool isDone;
+    [HideInInspector]
+    public bool isBack;
 
     private void Start()
     {
